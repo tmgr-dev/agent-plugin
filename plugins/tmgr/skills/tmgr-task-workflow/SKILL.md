@@ -46,6 +46,7 @@ Write for a reader who has not seen the chat: goal, what changed, how verified. 
 - A run with no update for 45 minutes is marked abandoned. Resume it with the same run id.
 - `get_persona` and `list_my_queue` work only with a persona token.
 - CLI commands that ask for a typed confirmation (queue, runner trust, autopilot) are for the user to run in a terminal.
+- `add_comment` takes the text in `message`, not `content`.
 - `tmgr_request` is a raw REST call. Use it only when no dedicated tool exists.
 
 ## Related
