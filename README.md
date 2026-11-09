@@ -2,8 +2,6 @@
 
 Skills and MCP configuration that teach AI coding agents to work with [TMGR](https://tmgr.dev): picking up tasks, reporting agent work, creating tasks, asking the owner through the Decisions inbox, and using pages.
 
-Status: local draft, not published.
-
 ## Skills
 
 | Skill | Use when |
