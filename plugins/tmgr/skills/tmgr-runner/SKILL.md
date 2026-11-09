@@ -5,7 +5,7 @@ description: Use when the user wants to start an agent in a managed terminal ses
 
 # tmgr run, sessions and the runner
 
-The runner is a background process that owns agent sessions. `tmgr run` starts it when needed. All of these commands are experimental, and control is local only: the TMGR server never sends commands to the runner. Start nothing unless the user asked.
+The runner is a background process that owns agent sessions. `tmgr run` starts it when needed. All of these commands are experimental, and control is local only: the TMGR server never sends commands to the runner. Start nothing unless the user asked. `send`, `halt`, `rm` and `runner stop|restart` act on sessions the user may be watching: only when asked. Never use `--no-sandbox` or a bypass permission mode unasked.
 
 ## Start
 

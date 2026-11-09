@@ -21,7 +21,7 @@ tmgr autopilot start --max-teams 2 --max-hours 4 [--rule NAME] [--dry-run] [--re
 ## Control
 
 - `tmgr autopilot status [--watch]`, `tmgr autopilot log --tail 100`.
-- `tmgr autopilot pause` stops new tasks; running ones finish. `resume` is refused inside an agent session, so the user runs it in a normal terminal. `stop` ends it and turns the queue off.
+- `tmgr autopilot pause` stops new tasks; running ones finish. `resume` is refused inside an agent session, so the user runs it in a normal terminal. `stop` ends it and turns the queue off, or puts it back to its background loop if that was running before.
 
 ## If it does not start
 

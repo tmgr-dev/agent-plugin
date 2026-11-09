@@ -13,6 +13,8 @@ Tasks and pages are linked (relations: blocks, depends on, duplicates, relates t
 - `graph_orphans(workspaceId)`: open tasks and pages with no links. Forgotten work, or pages that should be connected.
 - `graph_map(workspaceId, from, to, limit)`: the whole workspace in one call with clusters, bridges and insights. For reviews and planning only; the default is 500 nodes and `truncated=true` means the most connected were kept.
 
+The graph needs the Graph module, which needs Pages; if a tool says it is off, see tmgr-workspace-modules.
+
 Answers carry `url`s and keys; link with them. If `truncated` or `capsHit` is set, narrow `depth`, `include` or the dates before concluding something is missing.
 
 To add a relation, use the task tools (tmgr-create-tasks). Docs: https://tmgr.dev/docs/app/pages

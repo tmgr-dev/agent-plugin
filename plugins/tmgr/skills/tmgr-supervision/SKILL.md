@@ -11,7 +11,7 @@ description: Use when the user wants to run an agent in a sandbox, watch what it
 tmgr run --agent claude-code --worktree --checkpoints --name site-footer
 ```
 
-Detach from the live view with Ctrl+], then D; the agent keeps working.
+Start a session only when the user asks. Detach from the live view with Ctrl+], then D; the agent keeps working.
 
 ## Watch
 

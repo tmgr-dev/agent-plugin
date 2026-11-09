@@ -14,6 +14,6 @@ Each workspace turns on only the parts of TMGR it needs. Modules are in Workspac
 
 ## When something looks missing
 
-"Pages are disabled in this workspace" and "Agent work is disabled in workspace X" mean the module is off. These are not errors: skip pages or agent-work reporting there (use task comments instead). Do not ask to turn a module on just to make your own reporting easier. Agent runs and the agent queue need the Agent runs module (tmgr-agent-queue); statuses and the board need Workflow (tmgr-board).
+"Pages are disabled in this workspace" and "Agent work is disabled in workspace X" mean the module is off. These are not errors: skip pages or agent-work reporting there (use task comments instead). Do not ask to turn a module on just to make your own reporting easier. The Map and graph tools (tmgr-graph) need Graph, which needs Pages. Agent runs and the agent queue need the Agent runs module (tmgr-agent-queue); statuses and the board need Workflow (tmgr-board).
 
 Docs: https://tmgr.dev/docs/web/workspace-modules

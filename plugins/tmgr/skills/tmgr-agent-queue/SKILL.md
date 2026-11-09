@@ -21,7 +21,7 @@ Adding rules, enabling, approving and `runner allow/bind` need a real terminal a
 
 Check in order: Agent runs module on, the task is assigned to the persona and confirmed, `runner allowed` lists the workspace, a rule matches workspace, project and persona, `tmgr queue status` shows the queue enabled and not paused, and the concurrency limit is not reached.
 
-`tmgr runner gc --dry-run` lists finished task copies; `tmgr runner gc` removes them.
+`tmgr runner gc --dry-run` lists finished task copies; `tmgr runner gc` removes them: show the dry run and let the user run it.
 
 ## Related
 

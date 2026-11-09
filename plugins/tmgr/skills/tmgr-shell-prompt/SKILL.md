@@ -16,7 +16,7 @@ Then reload the shell (for example `source ~/.bashrc`). The segment is read from
 
 ## Notes
 
-- Print the snippet first (`tmgr init <target>` without `--install`) and let the user read it. Editing their shell config is their decision.
+- Print the snippet first (`tmgr init <target>` without `--install`) and let the user read it. Never pass `--yes` to `--install`. Editing their shell config is their decision.
 - `tmgr init claude` is the Claude Code status line. Rate-limit data for it is a different thing (`tmgr usage statusline install`, tmgr-ai-cost); do not mix them up and do not overwrite an existing status line without asking.
 - The timer in the prompt is the human's task timer (tmgr-time-tracking). An agent should start tasks with `--no-timer`.
 

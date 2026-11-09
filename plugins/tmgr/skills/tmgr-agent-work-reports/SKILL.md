@@ -22,6 +22,6 @@ An agent work run records one agent on one task: agent, model, role, branch, sta
 
 ## Writing
 
-Reporting your own run: tmgr-task-workflow. CLI hooks that notify and link commits: `tmgr hook install claude|codex` (asks for confirmation).
+Reporting your own run: tmgr-task-workflow. CLI hooks that notify and link commits: `tmgr hook install claude|codex` only when the user asks; it asks for confirmation, never add `--yes`.
 
 Docs: https://tmgr.dev/docs/cli/agent-work-reports
