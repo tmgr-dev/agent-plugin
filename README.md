@@ -17,7 +17,7 @@ Status: local draft, not published.
 ## Install (Claude Code)
 
 ```
-/plugin marketplace add <owner>/<repo>
+/plugin marketplace add tmgr-dev/agent-plugin
 /plugin install tmgr@tmgr
 ```
 

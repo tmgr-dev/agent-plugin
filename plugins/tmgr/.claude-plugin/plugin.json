@@ -19,5 +19,7 @@
   },
   "author": {
     "name": "TMGR"
-  }
+  },
+  "license": "MIT",
+  "repository": "https://github.com/tmgr-dev/agent-plugin"
 }
