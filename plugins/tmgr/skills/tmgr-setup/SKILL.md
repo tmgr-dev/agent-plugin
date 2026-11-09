@@ -8,14 +8,14 @@ description: Use when the user wants to connect an AI agent to TMGR, the tmgr MC
 ## Rules for secrets
 
 - The smart device token is a secret. Never ask the user to paste it into chat, never echo it, never write it into a tracked file, a task, a comment or a Decisions card.
-- Give the user a place to put it themselves: the plugin prompt (below), a gitignored file such as `.env.local`, or their own shell profile.
+- Give the user a place to put it themselves: the plugin prompt (below), or an environment variable they export themselves (`TMGR_TOKEN`, from their shell profile or a secret manager). Agents do not read `.env.local` on their own; the variable must be in the agent's environment.
 
 ## Cloud MCP (task tools)
 
 1. Check first: call `whoami`. If it answers, the server is connected; stop.
-2. Plugin install (preferred): the plugin ships the server. On enable, Claude Code asks for `tmgr_token` and stores it in the OS keychain. To set or change it later: `claude plugin configure tmgr`.
-3. Token source: TMGR web app, Settings, "MCP setup" block, Generate. Self-hosted: use your own `/mcp` URL instead of `https://api.tmgr.dev/mcp`.
-4. Without the plugin, the user runs this themselves (token from their own env var, not typed by you):
+2. Plugin install (preferred): the plugin ships the server. On enable, Claude Code asks for `tmgr_token` and stores it in the OS keychain. To set or change it later: `claude plugin configure tmgr` or the `/plugin` menu.
+3. Token source: TMGR web app, Settings, smart device token, Generate (the "MCP setup" block shows the URL). Self-hosted: use your own `/mcp` URL instead of `https://api.tmgr.dev/mcp`.
+4. Without the plugin, the user runs this themselves (token from their own env var, not typed by you). Note this writes the expanded token in plain text to the user-level Claude config; never use `--scope project`, which writes a `.mcp.json` that gets committed:
    `claude mcp add --transport http tmgr https://api.tmgr.dev/mcp --header "X-Smart-Device-Token: $TMGR_TOKEN"`
 5. Codex (`~/.codex/config.toml`):
    ```toml

@@ -23,7 +23,7 @@ Status: local draft, not published.
 
 or from a local clone: `claude plugin marketplace add ./agent-plugin` then `claude plugin install tmgr@tmgr`.
 
-On enable, Claude Code asks for the smart device token (TMGR web app: Settings, MCP setup, Generate). It is stored in the OS keychain; change it with `claude plugin configure tmgr`. The plugin does not contain a token.
+On enable, Claude Code asks for the smart device token (TMGR web app: Settings, smart device token, Generate). It is stored in the OS keychain; change it with `claude plugin configure tmgr`. The plugin does not contain a token.
 
 Try one session without installing: `claude --plugin-dir ./agent-plugin/plugins/tmgr`.
 

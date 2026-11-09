@@ -1,6 +1,6 @@
 ---
 name: tmgr-create-tasks
-description: Use when the user asks to create, split, rename, move, relate or archive TMGR tasks, or to put follow-ups and findings into the TMGR backlog.
+description: Use when the user asks to create, split, rename, relate or archive TMGR tasks, or to put follow-ups and findings into the TMGR backlog. Not for doing the work on a task (tmgr-task-workflow).
 ---
 
 # Creating and editing TMGR tasks

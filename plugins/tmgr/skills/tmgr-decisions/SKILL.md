@@ -1,6 +1,6 @@
 ---
 name: tmgr-decisions
-description: Use when you need the owner's decision, approval, review or check result before going on, when the work is blocked, or when you must notify the user's phone or raise an alarm. Covers the TMGR Decisions inbox (tmgr ask, ask_owner, get_answer) and notify/alarm.
+description: Use when you need the owner's decision, approval, review or check result before going on, when the work is blocked, or when you must notify the user's phone or raise an alarm. Covers the TMGR Decisions inbox (tmgr ask, ask_owner, get_answer) and notify/alarm. Not for task status changes or run reporting (tmgr-task-workflow).
 ---
 
 # Asking the owner
@@ -16,7 +16,9 @@ The owner answers from the phone or the TMGR desktop. A question that needs a de
 
 ## Make a card
 
-MCP tool `ask_owner`, or CLI:
+CLI `tmgr ask`, or the MCP tool `ask_owner`. The Decisions and phone tools (`ask_owner`, `get_answer`, `find_answers`, `reply_owner`, `notify_user`, `alarm`, `alarm_status`) live on the local stdio server `tmgr mcp`, not on the cloud MCP; without it use the CLI forms. See tmgr-setup.
+
+
 
 ```
 tmgr ask --title "Ship 1.4 now?" --question "..." --option "Ship" --option "Wait" --recommended 1 \

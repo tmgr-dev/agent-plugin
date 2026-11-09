@@ -13,7 +13,7 @@
     "tmgr_token": {
       "type": "string",
       "title": "TMGR smart device token",
-      "description": "Generate it in TMGR: Settings, Smart device token. Stored in the OS keychain.",
+      "description": "Generate it in TMGR: Settings, smart device token. Stored in the OS keychain.",
       "sensitive": true
     }
   },
