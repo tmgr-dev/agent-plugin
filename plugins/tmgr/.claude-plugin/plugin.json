@@ -1,0 +1,23 @@
+{
+  "name": "tmgr",
+  "version": "0.1.0",
+  "description": "Teaches AI agents to work with TMGR: tasks, agent-work reporting, Decisions inbox, pages. Connects the TMGR cloud MCP server.",
+  "homepage": "https://tmgr.dev",
+  "keywords": [
+    "tmgr",
+    "tasks",
+    "mcp",
+    "agent-work"
+  ],
+  "userConfig": {
+    "tmgr_token": {
+      "type": "string",
+      "title": "TMGR smart device token",
+      "description": "Generate it in TMGR: Settings, Smart device token. Stored in the OS keychain.",
+      "sensitive": true
+    }
+  },
+  "author": {
+    "name": "TMGR"
+  }
+}

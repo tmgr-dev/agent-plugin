@@ -1,0 +1,12 @@
+{
+  "name": "tmgr",
+  "description": "Skills and MCP config that teach AI agents to work with TMGR (tmgr.dev)",
+  "owner": { "name": "TMGR" },
+  "plugins": [
+    {
+      "name": "tmgr",
+      "source": "./plugins/tmgr",
+      "description": "TMGR for AI agents: cloud MCP, task and agent-work workflow, Decisions inbox, pages, setup"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "tmgr": {
+      "type": "http",
+      "url": "https://api.tmgr.dev/mcp",
+      "headers": {
+        "X-Smart-Device-Token": "${user_config.tmgr_token}"
+      }
+    }
+  }
+}
