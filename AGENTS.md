@@ -1,6 +1,6 @@
 ## TMGR (task manager) for coding agents
 
-This project tracks work in TMGR (https://tmgr.dev). When the user mentions a task (TM-123, #8974 or a tmgr.dev link):
+This project tracks work in TMGR (https://tmgr.dev). When the user mentions a task (TM-123, #1234 or a tmgr.dev link):
 
 1. Connect: the `tmgr` MCP server (Streamable HTTP, `https://api.tmgr.dev/mcp`, header `X-Smart-Device-Token` from the env var `TMGR_TOKEN`). Never print, store or commit the token. Check with `whoami`.
 2. Before working: `workspace_context` and `pages_for_task`; follow the workspace rules. Statuses differ per workspace: choose by type via `list_statuses`.

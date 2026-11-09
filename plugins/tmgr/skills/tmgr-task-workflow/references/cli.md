@@ -4,7 +4,7 @@ Run `tmgr <command> --help` for the full flags. Add `--json` for machine output 
 
 ## References and workspaces
 
-- `TM-512` (needs `--ws <code>` or a default set with `tmgr ws use <code>`), `#8974` / `8974` (global id). `tmgr help refs`.
+- `TM-512` (needs `--ws <code>` or a default set with `tmgr ws use <code>`), `#1234` / `1234` (global id). `tmgr help refs`.
 - `--ws local:<code>`: a local workspace of the TMGR desktop app. No login, no network. Cloud and local task ids are different spaces.
 - `tmgr ws list`, `tmgr whoami`, `tmgr status`.
 

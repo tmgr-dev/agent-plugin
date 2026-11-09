@@ -1,6 +1,6 @@
 ---
 name: tmgr-task-workflow
-description: Use when the user asks to work on, pick up, continue or finish a TMGR task (TM-123, #8974, a tmgr.dev/.../tasks/N link), or to report agent work, track time on a task, or comment on a task. Not for creating new tasks (tmgr-create-tasks) or pages (tmgr-pages).
+description: Use when the user asks to work on, pick up, continue or finish a TMGR task (TM-123, #1234, a tmgr.dev/.../tasks/N link), or to report agent work, track time on a task, or comment on a task. Not for creating new tasks (tmgr-create-tasks) or pages (tmgr-pages).
 ---
 
 # Working a TMGR task
@@ -9,7 +9,7 @@ The TMGR MCP server sends its own WORKFLOW rules on connect (order of calls, 15-
 
 ## Before you start
 
-1. Resolve the task: id from a link, or `search_tasks` / `get_task`. References: `TM-512` (category key, needs the workspace), `#8974` or `8974` (global id). Always link to the task with the `url` field of the response, never a hand-built URL.
+1. Resolve the task: id from a link, or `search_tasks` / `get_task`. References: `TM-512` (category key, needs the workspace), `#1234` or `1234` (global id). Always link to the task with the `url` field of the response, never a hand-built URL.
 2. Call `workspace_context` for the task's workspace, then `pages_for_task`. They hold the team rules (branches, releases, what not to touch). Obey them over your defaults. If they answer "Pages are disabled", there are none.
 3. Statuses are per workspace and names differ. Get ids from `list_statuses`; pick by TYPE (`active`, `completed`, `archived`), never by a remembered name.
 4. If the task has an assignee or persona that is not you, or the comments say it is reserved, stop and ask the owner (see tmgr-decisions).
@@ -38,6 +38,15 @@ The TMGR MCP server sends its own WORKFLOW rules on connect (order of calls, 15-
 ## Descriptions and comments
 
 Write for a reader who has not seen the chat: goal, what changed, how verified. Keep it short. Match the language the task is written in unless the workspace rules say otherwise.
+
+## Gotchas
+
+- Follow the workspace rules returned by `workspace_context`; they beat your defaults and any convention you remember from another workspace.
+- Two runs of the same agent with the same `role` on one task end each other. Give each helper its own role (tmgr-agent-teams).
+- A run with no update for 45 minutes is marked abandoned. Resume it with the same run id.
+- `get_persona` and `list_my_queue` work only with a persona token.
+- CLI commands that ask for a typed confirmation (queue, runner trust, autopilot) are for the user to run in a terminal.
+- `tmgr_request` is a raw REST call. Use it only when no dedicated tool exists.
 
 ## Related
 
