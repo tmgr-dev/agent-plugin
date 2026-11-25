@@ -14,7 +14,7 @@ Pages are the workspace's shared memory (rules, architecture, notes) and can be 
 
 ## Writing
 
-- Context pages belong to the owner. You may write ONLY the section "Agent notes" (section id `agent-notes`): `pages_append` without a heading, or `pages_set_section` with `sectionId` `agent-notes`. Never edit another section.
+- With an agent persona token you may create and edit pages of type "Context" in your own workspace directly. Sections owned by someone else and system sections stay read-only. Context pages you write reach every agent's `workspace_context`, so write only workspace-wide rules there. For durable facts the next agent needs, use the section "Agent notes" (section id `agent-notes`): `pages_append` without a heading, or `pages_set_section` with `sectionId` `agent-notes`.
 - Put in Agent notes only durable facts the next agent needs: what shipped and where, a hold or gate, a gotcha, an open decision. Date each entry. No secrets, no chat narration, no progress logs (those go to agent-work updates).
 - Your own pages (specs, plans, reports): `pages_create` with a parent and, when it belongs to a task, link it to that task. `pages_update` replaces content, so read first and change only what you mean to.
 - Task-level progress belongs in task comments (tmgr-task-workflow), not pages.

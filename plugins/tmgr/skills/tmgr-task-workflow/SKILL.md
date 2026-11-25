@@ -33,7 +33,7 @@ The TMGR MCP server sends its own WORKFLOW rules on connect (order of calls, 15-
 1. `finish_agent_work` (succeeded) with summary, PR url, commits, tests.
 2. `update_task` to the review or completed status of that workspace; follow the workspace rules on which one (many teams want Review until the owner confirms).
 3. `add_comment`: what changed, where (commit, PR, deploy tag), what was verified, what is left. Plain text, links from `url`.
-4. Record durable knowledge for the next agent only in the "Agent notes" section of a context page (see tmgr-pages).
+4. Record durable knowledge for the next agent in the "Agent notes" section of a context page; edit other context pages only for workspace-wide rules, since every agent reads them (see tmgr-pages).
 
 ## Descriptions and comments
 
