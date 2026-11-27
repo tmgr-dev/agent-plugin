@@ -7,25 +7,31 @@ description: Use when the user wants to connect an AI agent to TMGR, the tmgr MC
 
 ## Rules for secrets
 
-- The smart device token is a secret. Never ask the user to paste it into chat, never echo it, never write it into a tracked file, a task, a comment or a Decisions card.
-- Give the user a place to put it themselves: the plugin prompt (below), or an environment variable they export themselves (`TMGR_TOKEN`, from their shell profile or a secret manager). Agents do not read `.env.local` on their own; the variable must be in the agent's environment.
+- Treat persona and smart device tokens as secrets. Have the operator provide them through the MCP client's environment or a secret manager. Keep token values out of chat, source files, task comments and logs.
 
-## Cloud MCP (task tools)
+## Cloud MCP for coding agents
 
-1. Check first: call `whoami`. If it answers, the server is connected; stop.
-2. Plugin install (preferred): the plugin ships the server. On enable, Claude Code asks for `tmgr_token` and stores it in the OS keychain. To set or change it later: `claude plugin configure tmgr` or the `/plugin` menu.
-3. Token source: TMGR web app, Settings, smart device token, Generate (the "MCP setup" block shows the URL). Self-hosted: use your own `/mcp` URL instead of `https://api.tmgr.dev/mcp`.
-4. Without the plugin, the user runs this themselves (token from their own env var, not typed by you). Note this writes the expanded token in plain text to the user-level Claude config; never use `--scope project`, which writes a `.mcp.json` that gets committed:
-   `claude mcp add --transport http tmgr https://api.tmgr.dev/mcp --header "X-Smart-Device-Token: $TMGR_TOKEN"`
-5. Codex (`~/.codex/config.toml`):
+1. Check the connected identity with `whoami`. On a persona connection, `get_persona` returns its instructions and skills.
+2. In **Settings → Personas**, choose the persona, then **Agent connections → Connect an agent**. Choose its workspace and expiry. Inspect the grants returned by `whoami`. Reading task context pages needs `pages:read`, and updating a task needs `tasks:write`. If a required grant is missing, the operator can enable it for this persona in that workspace. The connection acts as this persona with its granted permissions in that workspace.
+3. The operator supplies the issued token as `TMGR_PERSONA_TOKEN` in the environment that launches the client, then restarts it. The Claude plugin includes this HTTP server configuration. For manual Claude setup, a project `.mcp.json` can contain the same variable reference:
+
+   ```json
+   {"mcpServers":{"tmgr":{"type":"http","url":"https://api.tmgr.dev/mcp","headers":{"X-Persona-Token":"${TMGR_PERSONA_TOKEN}"}}}}
+   ```
+
+4. For Codex, put the following in `~/.codex/config.toml`:
+
    ```toml
    [mcp_servers.tmgr]
    url = "https://api.tmgr.dev/mcp"
-   env_http_headers = { "X-Smart-Device-Token" = "TMGR_TOKEN" }
+   env_http_headers = { "X-Persona-Token" = "TMGR_PERSONA_TOKEN" }
    ```
-   Cursor (`.cursor/mcp.json`): `{"mcpServers":{"tmgr":{"url":"https://api.tmgr.dev/mcp","headers":{"X-Smart-Device-Token":"${env:TMGR_TOKEN}"}}}}`
-6. Rotate a leaked token by generating a new one in Settings and updating the stored value.
-7. Server authenticates by header only (no OAuth), so claude.ai web connectors will not work.
+
+   Cursor uses `${env:TMGR_PERSONA_TOKEN}` for the header value in `.cursor/mcp.json`. For self-hosted TMGR, use the installation's own HTTPS MCP URL.
+
+## User-level smart device connection
+
+Use this mode when the operator needs the agent to act as their user across their workspaces. Generate a smart device token under **Settings → Smart device token** and supply it as `TMGR_TOKEN`. In a manual MCP configuration use `X-Smart-Device-Token` as the sole auth header and reference that variable using the client's syntax above. Use one connection mode per server entry. An existing 0.2.x plugin keychain value is a device token. Issue a persona token for the new bundled configuration.
 
 ## Local `tmgr` CLI (optional, adds timers, Decisions, hooks)
 

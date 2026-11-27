@@ -15,7 +15,7 @@ The full list is at https://tmgr.dev/docs/cli/troubleshooting. Do not paste toke
 
 ## MCP 401
 
-The cloud MCP uses the smart device token from the plugin configuration or the `TMGR_TOKEN` environment variable. 401 means the token is missing, revoked or the header is not set. Regenerate it in the web app and reconfigure (tmgr-setup). A persona token only works in its own workspace.
+The bundled server reads `TMGR_PERSONA_TOKEN` and sends `X-Persona-Token`. Check that the launching process received the variable and that the persona connection is current. Reissue expired or revoked tokens in **Settings → Personas → Agent connections**. For a manual smart device connection, check `TMGR_TOKEN` and `X-Smart-Device-Token` instead. Each token belongs to its own header. Reconnect and verify with `whoami`.
 
 ## Updating tmgr
 

@@ -46,7 +46,9 @@ Skills and MCP configuration that teach AI coding agents to work with [TMGR](htt
 
 or from a local clone: `claude plugin marketplace add ./agent-plugin` then `claude plugin install tmgr@tmgr`.
 
-On enable, Claude Code asks for the smart device token (TMGR web app: Settings, smart device token, Generate). It is stored in the OS keychain; change it with `claude plugin configure tmgr`. The plugin does not contain a token.
+Create a persona connection under **Settings → Personas → select a persona → Agent connections → Connect an agent**. Choose the workspace and expiry. Supply the issued token through your secret manager as `TMGR_PERSONA_TOKEN` in the environment that launches Claude Code. Restart the client, then check `whoami` and `get_persona`. Work is attributed to the persona and uses its permissions in that workspace.
+
+**Upgrading from 0.2.x.** The old `tmgr_token` plugin setting holds a smart device credential. Configure a new persona connection when upgrading. For an intentional user-level connection, follow the manual smart device instructions in the [setup guide](plugins/tmgr/skills/tmgr-setup/SKILL.md).
 
 Try one session without installing: `claude --plugin-dir ./agent-plugin/plugins/tmgr`.
 
